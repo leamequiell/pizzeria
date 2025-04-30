@@ -3,13 +3,13 @@ package com.sample.core.domain;
 public class Usuario extends GenericEntity{
 	
 	private String usuario;
-	private String password;
+	private String contrasena;
 	
 
-	public Usuario(int id, String usuario, String password) {
+	public Usuario(int id, String usuario, String contrasena) {
 		super.setId(id);
 		this.usuario = usuario;
-		this.password = password;
+		this.contrasena = contrasena;
 	}
 
 
@@ -26,14 +26,14 @@ public class Usuario extends GenericEntity{
 
 
 
-	public String getPassword() {
-		return password;
+	public String getContrasena() {
+		return contrasena;
 	}
 
 
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	
 	

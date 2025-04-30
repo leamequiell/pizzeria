@@ -1,6 +1,5 @@
 package com.sample.core.controller.plato;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -14,10 +13,8 @@ import com.sample.core.domain.Plato;
 import com.sample.core.service.PlatoService;
 import com.sample.core.service.PlatoServiceImpl;
 
-
 @WebServlet( urlPatterns =  "/loadPlatoForm")
 public class LoadPlatoForm  extends HttpServlet{
-
 	private PlatoService platoService = new PlatoServiceImpl();
 	
 	@Override

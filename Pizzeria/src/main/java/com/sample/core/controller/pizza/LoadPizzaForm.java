@@ -15,7 +15,7 @@ import com.sample.core.service.PizzaServiceImpl;
 
 @WebServlet( urlPatterns =  "/loadPizzaForm")
 public class LoadPizzaForm extends HttpServlet{
-	private pizzaService pizzaService = new pizzaServiceImpl();
+	private PizzaService pizzaService = new PizzaServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class LoadPizzaForm extends HttpServlet{
 			 
 			// System.err.println(id);
 			 
-			 pizza pizza =  pizzaService.consultarpizza( Integer.parseInt(id) );
+			 Pizza pizza =  pizzaService.consultarPizza( Integer.parseInt(id) );
 			 
 			 req.setAttribute("pizza", pizza);
 		

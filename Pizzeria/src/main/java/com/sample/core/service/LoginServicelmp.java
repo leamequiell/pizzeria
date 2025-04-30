@@ -13,8 +13,8 @@ public class LoginServicelmp implements LoginService{
 	}
 
 
-	public void consultarUsuarioYpassword(String usuario, String password) throws Exception {
-		loginDao.existeUsuarioPassword(usuario, password);
+	public void consultarUsuarioYcontrasena(String usuario, String contrasena) throws Exception {
+		loginDao.existeUsuarioContrasena(usuario, contrasena);
 	}
 
 

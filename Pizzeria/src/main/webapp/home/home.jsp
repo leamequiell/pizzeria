@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>    
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>  
 <%@page import="java.util.*"%>
 <%@page import="com.sample.core.domain.Pizza"%>
 <!DOCTYPE html>
@@ -19,7 +17,8 @@
 	</script>
 	<script src="<%=request.getContextPath()%>/scripts/scripts-barcito.js"></script>
 		<script src="<%=request.getContextPath()%>/scripts/logout.js"></script>
-	
+	<script src="<%=request.getContextPath()%>/scripts/eliminarPizza.js"> </script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -84,45 +83,6 @@
 	<div class="card-group homeitem mt-4"  id="boxGroupMesas">
 
 
-	<div class="container mt-4">
-	
-	
-		<span>
-				<a class="btn btn-primary"  href="<%=request.getContextPath()%>/formulario?form=platoform" > Nuevo </a>
-		</span>
 		
-		<%  List<Pizza> pizza  = (List) request.getAttribute("pizza"); %>
-		
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">id</th>
-		      <th scope="col">Titulo</th>
-		      <th scope="col">Precio</th>
-		      <th scope="col">Descripcion</th>
-		      <th scope="col">Operaciones</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		<%for(int i=0;i<pizza.size();i++){
-			%>
-			 
-			<tr bgcolor="white">
-			<td><%=pizza.get(i).getId() %></td>
-			<td><%=pizza.get(i).getTitulo() %></td>
-			<td><%=pizza.get(i).getPrecio()%></td>
-			<td><%=pizza.get(i).getDescripcion()%></td>
-			<td> 
-				<a class="btn btn-primary"  href="<%=request.getContextPath()%>/loadPizzaForm?id=<%=pizza.get(i).getId()%>" > editar </a>
-			 	<button class="btn btn-danger"  data-id="<%=pizza.get(i).getId()%>"  onClick="myFunction(this)" > eliminar </button>
-			 	<button class="btn btn-warning"  data-id="<%=pizza.get(i).getId()%>"   > Agregar a pedido </button>
-		
-			 </td>
-		<%		
-		}
-		%>
-		 </tbody>
-	
-	</table>			
 </body>
 </html>

@@ -21,24 +21,30 @@ public class IngresarUsuario extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	LoginService usuarioservice = new LoginServicelmp();
-	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	    resp.setContentType("text/plain");
+	    resp.getWriter().write("Este endpoint solo acepta peticiones POST.");
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String usuario = req.getParameter("usuario");
-		String password = req.getParameter("password");		
-		
+		String contrasena = req.getParameter("contrasena");		
+		System.out.println("Usuario: " + usuario);
+		System.out.println("Contraseña: " + contrasena);
 		try {
 			
-			if (usuario.length()== 0 || usuario == null)
+			if (usuario == null || usuario.length() == 0)
 				throw new Exception("usuario vacio");
 			
-			if (password.length()== 0 || password == null)
-				throw new Exception("password vacio");
+			if (contrasena == null || contrasena.length() == 0)
+				throw new Exception("contrasena vacio");
 					
 			usuarioservice.consultarUsuario(usuario);
 			
-			usuarioservice.consultarUsuarioYpassword(usuario, password);
+			usuarioservice.consultarUsuarioYcontrasena(usuario, contrasena);
 			
 			HttpSession jsession = req.getSession(true);
 			jsession.setAttribute("CURRENT_USER", usuario);

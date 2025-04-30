@@ -6,16 +6,16 @@ import com.sample.core.dao.PizzaDao;
 import com.sample.core.dao.PizzaDaoImp;
 import com.sample.core.domain.Pizza;
 
-public class PizzaServiceImpl implements PlatoService{
+public class PizzaServiceImpl implements PizzaService{
 
-	private PizzaDao platoDao = new PizzaDaoImp();
+	private PizzaDao pizzaDao = new PizzaDaoImp();
 	
 	
-	public List<Pizza> listarPlatos() throws Exception {
+	public List<Pizza> listarPizza() throws Exception {
 		return pizzaDao.list();
 	}
 
-	public Pizza consultarPLato(int id) throws Exception {
+	public Pizza consultarPizza(int id) throws Exception {
 		return pizzaDao.findById(id);
 	}
 

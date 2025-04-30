@@ -2,7 +2,7 @@ $(function() {
     $("#btn-login").click(function (e) {
         e.preventDefault(); 
         var usuario =$("#usuario").val();
-        var password =$("#password").val();
+        var contrasena =$("#contrasena").val();
             $.ajax({
                 url: contextPath + '/ingresarUsuario',
                 dataType: 'json',
@@ -15,7 +15,7 @@ $(function() {
                 },
                 data: {
                     usuario: usuario,
-                    password: password,
+                    contrasena: contrasena,
                 },
                 cache: true,
                 type: 'post'

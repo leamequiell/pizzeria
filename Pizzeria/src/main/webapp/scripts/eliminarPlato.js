@@ -4,8 +4,8 @@ function myFunction(data){
     
     //agregamos sweet alert
     Swal.fire({
-        title: "Esta seguro de Eliminar el Plato?",
-        text: "El plato asera eliminado de la base!",
+        title: "Esta seguro de Eliminar la Pîzza?",
+        text: "La Pizza sera eliminado de la base!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -16,7 +16,7 @@ function myFunction(data){
             //agregamos ajax
             $.ajax({
                 type: "get",
-                url: contextPath+"/PlatoEliminar?id="+value,
+                url: contextPath+"/PizzaEliminar?id="+value,
                 dataType: "json",
                 success: function (response) {
                     //agregamos sweet alert
