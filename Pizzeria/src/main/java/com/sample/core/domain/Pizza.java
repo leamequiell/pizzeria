@@ -1,56 +1,57 @@
 package com.sample.core.domain;
 
-public class Bebida extends GenericEntity implements Pedible {
-
+public class Pizza extends GenericEntity implements Pedible{
+private int precio;
 	
-	private int precio;
 	private String titulo;
+	
 	private String descripcion;
 	
-	public Bebida(){
-		
-	}
-
-	
-	
-	public Bebida(int id,String titulo,String descripcion,int precio ) {
-		super.setId(id);
-		this.titulo = titulo;
-		this.precio = precio;
-		this.descripcion = descripcion;
-	}
-	
-	
-	public Bebida(int precio, String titulo) {
+	public Pizza(int precio, String titulo) {
 		super();
 		this.precio = precio;
 		this.titulo = titulo;
 	}
-
-	public int damePrecio() {
-		return this.getPrecio();
+	
+	
+	public Pizza(int id,int precio, String titulo) {
+		super.setId(id);
+		this.precio = precio;
+		this.titulo = titulo;
 	}
-
-
-	public String dameTitulo() {
-		// TODO Auto-generated method stub
-		return this.getTitulo();
+	
+	public Pizza(int id,int precio,String descripcion, String titulo) {
+		super.setId(id);
+		this.precio = precio;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
 	}
-
+	
+	
+	
+	
+	
 	public int getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-
 	public String getTitulo() {
 		return titulo;
 	}
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	
+	
+	
+	public int damePrecio() {
+		return  this.getPrecio();
+	}
+	
+	public String dameTitulo() {
+		return this.getTitulo();
 	}
 
 
@@ -62,7 +63,4 @@ public class Bebida extends GenericEntity implements Pedible {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
-
 }
