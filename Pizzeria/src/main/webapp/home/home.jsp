@@ -68,9 +68,9 @@
 		<div class="card m-2" >
 		  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2023/05/31/11/15/fish-8031138_960_720.jpg" alt="Card image cap">
 		  <div class="card-body">
-		    <h5 class="card-title">Plato</h5>
+		    <h5 class="card-title">Pizza</h5>
 		    <p class="card-text">Pizza disponibles</p>
-		    <a href="<%= request.getContextPath()%>/LeerDatosPlato" class="btn btn-primary">Ir</a>
+		    <a href="<%= request.getContextPath()%>/LeerDatosPizza" class="btn btn-primary">Ir</a>
 		  </div>
 		</div>
 		

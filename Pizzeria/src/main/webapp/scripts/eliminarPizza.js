@@ -4,7 +4,7 @@ function myFunction(data){
     
     //agregamos sweet alert
     Swal.fire({
-        title: "Esta seguro de Eliminar la Pîzza?",
+        title: "Esta seguro de Eliminar la Pizza?",
         text: "La Pizza sera eliminado de la base!",
         icon: "warning",
         showCancelButton: true,
@@ -22,7 +22,7 @@ function myFunction(data){
                     //agregamos sweet alert
                     Swal.fire({
                         title: "Eliminado!",
-                        text: "El plato se elimino correctamente.",
+                        text: "El pizza se elimino correctamente.",
                         icon: "success"
                       });
                       //fin sweet alert
