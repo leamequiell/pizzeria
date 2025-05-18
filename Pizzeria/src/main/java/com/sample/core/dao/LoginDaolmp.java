@@ -6,21 +6,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.sample.core.dao.config.Conexion;
 import com.sample.core.domain.Usuario;
+import com.sample.core.enums.Rol;
 import com.sample.core.exceptions.ErrorException;
 
 public class LoginDaolmp implements LoginDao {
 
 	private Conexion conexion = Conexion.getInstance();
 
-	private static final String queryFindByUser = "SELECT id, usuario, contrasena FROM administrador where usuario = ?";
+	private static final String queryFindByUser = "SELECT id, usuario, contrasena,rol FROM administrador where usuario = ?";
 
 	private static final String queryFindByUserAndContrasena = "SELECT id, usuario, contrasena FROM administrador where usuario = ? and contrasena = ?";
 
-	private static final String queryList = "SELECT id, usuario, contrasena FROM administrador";
+	private static final String queryList = "SELECT id, usuario, contrasena, rol FROM administrador";
 
-	private static final String queryConsultarUsuario = "SELECT id, usuario, contrasena FROM administrador where id=?";
+	private static final String queryConsultarUsuario = "SELECT id, usuario, contrasena, rol FROM administrador where id=?";
 
 	public List<Usuario> list() throws Exception {
 		ResultSet rs = null;
@@ -32,7 +36,19 @@ public class LoginDaolmp implements LoginDao {
 			rs = st.executeQuery();
 			Usuario = new ArrayList<Usuario>();
 			while (rs.next()) {
-				usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3));
+				String rolString = rs.getString(4);
+				Rol rol = null;
+
+				if (rolString != null && !rolString.isEmpty()) {
+				    try {
+				        rol = Rol.valueOf(rolString);
+				    } catch (IllegalArgumentException e) {
+				        System.out.println("Valor de rol no válido: " + rolString);
+				    }
+				}
+
+				// Luego, usas 'rol' en el constructor del Usuario
+				usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3), rol);
 				Usuario.add(usuario);
 			}
 
@@ -61,7 +77,21 @@ public class LoginDaolmp implements LoginDao {
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
-				return new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3));
+				// Dentro del método list(), findById() o donde sea que estés recuperando el rol
+				String rolString = rs.getString(4);  // Asumimos que el rol está en la columna 4 de la base de datos
+				Rol rol = null;  // Inicializamos como null para verificar si hay un problema
+
+				if (rolString != null && !rolString.isEmpty()) {
+				    try {
+				        rol = Rol.valueOf(rolString);  // Esto mapea el valor de la base de datos al enum
+				    } catch (IllegalArgumentException e) {
+				        // Si el valor del rol no es válido, asigna un valor predeterminado
+				        System.out.println("Valor de rol no válido: " + rolString);
+				        rol = Rol.DEFAULT;  // O puedes asignar cualquier valor predeterminado que definas en tu enum
+				    }
+				}
+
+				return new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3),rol);
 			}
 
 		} catch (Exception e) {

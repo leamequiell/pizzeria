@@ -44,7 +44,7 @@
 		<%
 		for (int i = 0; i < pizza.size(); i++) {
 		%>
-
+		
 		<div class="card" style="width: 18rem;">
 			<div class="card-body">
 				<h5 class="card-title"><%=pizza.get(i).getTitulo()%></

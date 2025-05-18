@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.JsonObject;
 import com.sample.core.service.LoginService;
 import com.sample.core.service.LoginServicelmp;
-
+import com.sample.core.dao.LoginDaolmp;
 
 @WebServlet( urlPatterns =  "/ingresarUsuario")
 public class IngresarUsuario extends HttpServlet{
@@ -43,8 +43,10 @@ public class IngresarUsuario extends HttpServlet{
 				throw new Exception("contrasena vacio");
 					
 			usuarioservice.consultarUsuario(usuario);
-			
 			usuarioservice.consultarUsuarioYcontrasena(usuario, contrasena);
+			
+			String rol = (String) req.getSession().getAttribute("ROL_USUARIO");  // Método en servicio o DAO que obtiene el rol
+			req.getSession().setAttribute("ROL_USUARIO", rol);
 			
 			HttpSession jsession = req.getSession(true);
 			jsession.setAttribute("CURRENT_USER", usuario);
@@ -58,6 +60,7 @@ public class IngresarUsuario extends HttpServlet{
 
 	}
 	
+
 	private void setOutResponse(String mensaje,HttpServletResponse resp, int code, String status) throws IOException {
 		 PrintWriter out = resp.getWriter();
 		 resp.setContentType("application/json");

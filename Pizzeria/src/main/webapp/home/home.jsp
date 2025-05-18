@@ -21,7 +21,19 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
+			
+	<%
+	    String rol = (String) session.getAttribute("ROL_USUARIO");
+	    if ("ADMIN".equals(rol)) {
+	    	
+	
+	%>
+	    <p>Hola Admin, podés ver esto.</p>
+	    <!-- O poner botones, secciones, lo que quieras -->
+	<%
+	    }
+	%>
+	<p>Rol detectado: <%= rol %></p>
 <div class="container">
 
 	<div class="alert alert-block">

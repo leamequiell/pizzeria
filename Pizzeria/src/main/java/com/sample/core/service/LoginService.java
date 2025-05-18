@@ -9,7 +9,5 @@ public interface LoginService {
 	public void consultarUsuario(String usuario) throws Exception;
 	
 	public void consultarUsuarioYcontrasena(String usuario, String  contrasena) throws Exception;
-
-	
 	
 }
